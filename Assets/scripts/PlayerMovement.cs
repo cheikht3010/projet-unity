@@ -14,14 +14,18 @@ public class PlayerMovement : MonoBehaviour
     {
          rb.AddForce(0, 0, forwadForce * Time.deltaTime);
 
-         if ( Input.GetKey("d") )
+         if ( Input.GetKey("right") )
          {
              rb.AddForce(sidewaysForce * Time.deltaTime, 0,  0, ForceMode.VelocityChange);
          }
 
-         if ( Input.GetKey("a") )
+         if ( Input.GetKey("left") )
          {
              rb.AddForce(-sidewaysForce * Time.deltaTime, 0,  0, ForceMode.VelocityChange);
+         }
+         if (rb.position.y < -1f) 
+         {
+             FindObjectOfType<GameManager>().EndGame();
          }
     }
 }
